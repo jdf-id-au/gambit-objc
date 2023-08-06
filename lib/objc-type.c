@@ -29,7 +29,7 @@ static ___SCMOBJ return_id(struct objc_type *type, void *value, ___SCMOBJ *resul
 	}
 
 	CFRetain(object);
-	return ___EXT(___POINTER_to_SCMOBJ) (object, object_tags(), release_object, result, -1);
+	return ___EXT(___POINTER_to_SCMOBJ) (___PSTATE, object, object_tags(), release_object, result, -1);
 }
 
 static ___SCMOBJ pass_SEL(struct objc_type *type, void *value, ___SCMOBJ parameter)
@@ -42,7 +42,7 @@ static ___SCMOBJ pass_SEL(struct objc_type *type, void *value, ___SCMOBJ paramet
 
 static ___SCMOBJ return_SEL(struct objc_type *type, void *value, ___SCMOBJ *result)
 {
-	return ___EXT(___POINTER_to_SCMOBJ) (*(SEL *)value, selector_tags(), NULL, result, -1);
+	return ___EXT(___POINTER_to_SCMOBJ) (___PSTATE, *(SEL *)value, selector_tags(), NULL, result, -1);
 }
 
 static ___SCMOBJ return_void(struct objc_type *type, void *value, ___SCMOBJ *result)
@@ -65,7 +65,7 @@ static ___SCMOBJ return_BOOL(struct objc_type *type, void *value, ___SCMOBJ *res
 #define RETURN_PARSING_FUNCTION(name,c_type) \
 	static ___SCMOBJ return_##name (struct objc_type *type, void *value, ___SCMOBJ *result) \
 	{ \
-		return ___EXT(___##name##_to_SCMOBJ) (*(c_type *)value, result, -1); \
+		return ___EXT(___##name##_to_SCMOBJ) (___PSTATE, *(c_type *)value, result, -1); \
 	}
 MAKE_PARAMETER_FUNCTION(BOOL)
 MAKE_PARAMETER_FUNCTION(FLOAT)

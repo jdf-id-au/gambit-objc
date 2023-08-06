@@ -1,9 +1,9 @@
 
 prefix		= /usr/local
 
-CC		= gcc-4.2
+CC		= gcc
 CFLAGS		= -g -x objective-c
-LDFLAGS		= -g -lobjc -lgambc -lffi -framework Foundation
+LDFLAGS		= -g -lobjc -lgambit -lffi -framework Foundation
 
 bin/cocoa-example: LDFLAGS += -framework Cocoa
 
