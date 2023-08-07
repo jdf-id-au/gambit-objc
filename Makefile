@@ -3,7 +3,7 @@ prefix		= /usr/local
 
 CC		= gcc
 CFLAGS		= -g -x objective-c
-LDFLAGS		= -g -lobjc -lgambit -lffi -framework Foundation
+LDFLAGS		= -g -lobjc -lgambit -lffi -lcrypto -lssl -framework Foundation -v
 
 bin/cocoa-example: LDFLAGS += -framework Cocoa
 
